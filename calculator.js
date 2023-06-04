@@ -8,6 +8,7 @@ function operate(str) {
     let operator = parameters[1];
     let num2 = parseInt(parameters[2]);
    
+    if (operator == '/' && num2 == 0) return "IMPOSSIBLE";
 
     switch(operator) {
     case '+':
