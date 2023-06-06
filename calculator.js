@@ -1,3 +1,7 @@
+
+
+
+
 //Functions for add, subtract, multiply and divide.
 
 
@@ -60,6 +64,7 @@ let buttons = document.querySelectorAll('.btn');
 buttons.forEach((button)=> {
 button.addEventListener("mousedown",function() {
 
+
     if (button.textContent == 'CLEAR') {
         display.textContent = '';
     } else if (button.textContent == 'RETURN') {
@@ -87,7 +92,7 @@ button.addEventListener("mousedown",function() {
             if (lastChar == ' ' | lastChar == '.'){
             display.textContent;
     // Don't allow repeat operators at any point in the display
-            }else if (newDisplay.indexOf("+") !== -1 |newDisplay.indexOf("-") !== -1 |newDisplay.indexOf("*") !== -1 | newDisplay.indexOf("/") !== -1 ){
+            }else if (newDisplay.indexOf("+") !== -1 |newDisplay.indexOf(" - ") !== -1 |newDisplay.indexOf("*") !== -1 | newDisplay.indexOf("/") !== -1 ){
             display.textContent;
             }else {display.textContent += button.textContent;}
 

@@ -77,6 +77,12 @@
     align-items:center;
 }
 
+@media screen {
+    #calculator #calcDisplay {
+        font-size: 67px;
+       }
+    }
+
 #calcDisplay span{
     margin-right:20px;
 }
