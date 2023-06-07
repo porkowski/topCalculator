@@ -59,7 +59,7 @@ let display = document.querySelector('span');
 display.textContent = '';
 
 
-
+//Operate calculator via clicking buttons
 let buttons = document.querySelectorAll('.btn');
 buttons.forEach((button)=> {
 button.addEventListener("mousedown",function() {
@@ -115,9 +115,69 @@ button.addEventListener("mousedown",function() {
         display.textContent += button.textContent}
 
     }else{display.textContent += button.textContent;}
-}
+});
+//Operate calculator via keyboard 
 
 
 
-)})
-;
+});
+
+window.addEventListener("keydown",function (e) {
+    let input = e.key;
+  
+    if (e.key == 'Escape') {
+        display.textContent = '';
+    }else if (e.key == 'Backspace') {
+        let newDisplay = display.textContent;
+        let lastChar = newDisplay.substring(newDisplay.length,newDisplay.length-1);
+        //if the item to be deleted is an operator, it has two extra spaces. so 
+        //would need to remove some extra characters form string
+            if (lastChar == ' ') {
+            display.textContent = newDisplay.substring(0,newDisplay.length-3);
+            }else {
+            display.textContent = newDisplay.substring(0,newDisplay.length-1);
+            }
+    // Don't allow repeat operators directly after
+    }else if (e.key == '=') {
+        display.textContent = operate(display.textContent);
+    }
+    //Don't let display overflow. Allow display to reach maximum characters before overflowing.
+   else if (display.textContent.length >= 12 && display.textContent.includes(' ') ) {
+        display.textContent;
+   } else if (display.textContent.length >= 11 && !display.textContent.includes(' ')) {
+        display.textContent;
+   } else if(e.key == '+' | e.key == '-' | e.key == '*'| e.key == '/') {
+        let newDisplay = display.textContent;
+        let lastChar = newDisplay.substring(newDisplay.length,newDisplay.length-1);
+            if (lastChar == ' ' | lastChar == '.'){
+            display.textContent;
+    // Don't allow repeat operators at any point in the display
+            }else if (newDisplay.indexOf("+") !== -1 |newDisplay.indexOf(" - ") !== -1 |newDisplay.indexOf("*") !== -1 | newDisplay.indexOf("/") !== -1 ){
+            display.textContent;
+            }else {display.textContent += ' ' + `${e.key}` + ' ';}
+
+    // Don't allow repeat decimals directly after eachother, and dont allow
+    // two decimals per number
+    }else if (e.key == '.' ){
+        let newDisplay = display.textContent;
+        let lastChar = newDisplay.substring(newDisplay.length,newDisplay.length-1);
+        let splitDisplay = newDisplay.split(' ');
+        console.log(splitDisplay);
+        console.log(splitDisplay.length);
+        console.log(typeof(splitDisplay[0]));
+        if (lastChar == '.') {
+            display.textContent;
+        } else if (splitDisplay.length == 1 && splitDisplay[0].includes('.')) {
+            display.textContent;
+        } else if (splitDisplay.length == 3 && splitDisplay[2].includes('.')) {
+            display.textContent;
+        }else{
+        display.textContent += `${e.key}`}
+
+    }else if (/[0-9]/.test(input)) {display.textContent += `${e.key}`;}
+
+
+
+
+
+});
